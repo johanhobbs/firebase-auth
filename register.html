@@ -1,0 +1,80 @@
+<body>
+<header id='header'>
+</header>
+</section>
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Welcome</span>
+                        <span class="section-heading-lower">Sign Up</span>
+                    </h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input required type="email" class="form-control" id="email" placeholder="name@example.com" name="email" />
+                        </div>
+                        <div class="mb-3">
+                            <label r for="password" class="form-label">Password</label>
+                            <input required type="password" class="form-control" id="password" name="password" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input required type="name" class="form-control" id="name" placeholder="John Doe" name="name" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                    </form>
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                    <p>Don't need to signup? <a href="index.html">Continue as guest</a></p>
+                </div>
+            </div>
+        </div>
+</section>
+<footer class="footer text-faded text-center py-5">
+    <div class="container">
+        <p class="m-0 small">Copyright</p>
+    </div>
+</footer>
+<!--Bootstrap Core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--Firebase Setup-->
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js-fire"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
+
+<script src="./src/firebase.js"></script>
+<script src="./src/scripts.js"></script>
+<script src="./src/components.js"></script>
+<script src="./src/actions.js"></script>
+
+<script>
+    // NOTE watches for an event of the submission of a form
+    document.querySelector('form').addEventListener('submit', (e) => {
+        // NOTE e.preventDefault() will not allow "e" to be empty or a blank string
+        e.preventDefault()
+
+        // NOTE gets the data from e
+        const formData = new formData.get(e.target)
+
+        // NOTE sets a const of the email, username and password
+        const email = formData.get('email')
+        const password = formData.get('password')
+        const name = formData.get('name')
+    });
+
+    // NOTE This line sets up a watch on the authentication system of the firebase app
+    // checking for changes of the user.
+    firebaseApp.auth().onAuthStateChanged(user => {
+
+        // NOTE If there is a user logged in, the window location pathname will be changed on the website
+        if (user){
+            window.location.pathname = "/"
+        }
+    })
+</script>
+</body>
