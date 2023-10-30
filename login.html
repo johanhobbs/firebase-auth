@@ -41,11 +41,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script>
-
-<!--   
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";-->
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js-fire"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
     
 <script src="./src/firebase.js"></script>
 <script src="./src/scripts.js"></script>
@@ -61,8 +59,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebas
 
     signin(email, password)
 
-    
-})</script>
+
+})
+
+firebaseApp.auth().onAuthStateChanged(user =>{
+if(user){
+    window.location.pathname = '/'
+}
+})
+</script>
 
 </body>
 </html>
